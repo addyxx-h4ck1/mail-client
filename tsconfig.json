@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "ES6",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true, // Generates declaration files (.d.ts)
+    "sourceMap": true, // Generates source maps for easier debugging
+    "outDir": "./build",
+    "resolveJsonModule": true, // Enable importing .json files
+    "typeRoots": ["./node_modules/@types"], // Type definitions
+    "allowJs": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.mts"],
+  "exclude": ["node_modules", "build"]
+}
