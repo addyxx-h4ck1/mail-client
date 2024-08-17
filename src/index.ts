@@ -1,12 +1,15 @@
-const express = require('express');
-const env = require('dotenv').config();
+import express, { Request, Response } from 'express';
+import { config } from 'dotenv';
+import routeHandler from './routes/mail-route';
+config();
 const port = process.env.PORT;
 const app = express();
 
-//test route
-//@ts-ignore
-app.get('/', (req, res) => {
-  res.send('Hello there');
-});
+//middleware
+app.use(express.json());
 
+//routes
+app.use('/', routeHandler);
+
+//start server
 app.listen(port, () => console.log(`server is running on port ${port}`));
