@@ -6,4 +6,5 @@ export const configOptions: ConfigType = {
   ClientSecret: process.env.CLIENT_SECRET,
   RefreshToken: process.env.REFRESH_TOKEN,
   RedirectUri: process.env.REDIRECT_URI,
+  smtpsMail: process.env.SMTPS_MAIL,
 };

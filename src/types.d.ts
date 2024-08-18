@@ -3,4 +3,5 @@ type ConfigType = {
   ClientSecret: string | undefined;
   RefreshToken: string | undefined;
   RedirectUri: string | undefined;
+  smtpsMail: string | undefined;
 };

@@ -3,6 +3,7 @@ import { google } from 'googleapis';
 import { configOptions } from '../config/options';
 import path from 'path';
 import { getDir } from '../utils/getDir';
+import { createUser } from '../libs/save';
 
 export const handleOauthcallback = async (req: Request, res: Response) => {
   const oauth2Client = new google.auth.OAuth2(
@@ -22,7 +23,14 @@ export const handleOauthcallback = async (req: Request, res: Response) => {
     const { tokens } = await oauth2Client.getToken(code);
     oauth2Client.setCredentials(tokens);
 
-    console.log(tokens);
+    const oauth2 = google.oauth2({ version: 'v2', auth: oauth2Client });
+    const userInfo = await oauth2.userinfo.get();
+
+    await createUser(
+      userInfo.data.email,
+      tokens.refresh_token,
+      tokens.access_token
+    );
 
     res.sendFile(path.join(getDir(), '..', 'public', 'index.html'));
   } catch (error) {
