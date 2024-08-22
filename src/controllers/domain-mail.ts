@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
-import chalk from 'chalk';
 
 export const handleDomainMail = async (req: Request, res: Response) => {
   const transporter = nodemailer.createTransport({

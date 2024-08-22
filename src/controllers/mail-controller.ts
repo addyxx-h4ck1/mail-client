@@ -3,7 +3,7 @@ import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import { configOptions, testMessage } from '../config/options.js';
 import { config } from 'dotenv';
-import data from '../db.js';
+
 config();
 export const mailController = async (req: Request, res: Response) => {
   const { email, body, subject, text } = req.body;

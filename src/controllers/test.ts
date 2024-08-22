@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createUser, readDB } from '../libs/save.js';
+import { readDB } from '../libs/save.js';
 
 export const testHandler = async (req: Request, res: Response) => {
   try {
