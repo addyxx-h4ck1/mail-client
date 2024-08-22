@@ -1,8 +1,8 @@
 import path from 'path';
 import fsPromises from 'fs/promises';
 import fs from 'fs';
-import { getDir } from '../utils/getDir';
-import data from '../db.json';
+import { getDir } from '../utils/getDir.js';
+import data from '../db.json' assert { type: 'json' };
 
 export const readDB = async () => {
   const data = await fsPromises.readFile(

@@ -1,0 +1,33 @@
+import { Request, Response } from 'express';
+import nodemailer from 'nodemailer';
+import chalk from 'chalk';
+
+export const handleDomainMail = async (req: Request, res: Response) => {
+  const transporter = nodemailer.createTransport({
+    host: 'mail.pogkenyasafaris.com',
+    port: 465,
+    secure: true, // upgrade later with STARTTLS
+    auth: {
+      user: 'testup@pogkenyasafaris.com',
+      pass: 'briansbns1',
+    },
+  });
+
+  let mailOptions = {
+    from: 'Brian Njoroge', // sender address
+    to: 'briannjosh23@gmail.com', // list of receivers
+    subject: 'Hello', // Subject line
+    text: 'Hello world?', // plain text body
+    html: '<b>Hello world?</b>', // html body
+  };
+
+  try {
+    let mail = await transporter.sendMail(mailOptions);
+    console.log(mail.response);
+    res.json({ ok: true });
+  } catch (error: any) {
+    console.error(error);
+
+    res.json(error);
+  }
+};

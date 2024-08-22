@@ -1,11 +1,17 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { config } from 'dotenv';
-import routeHandler from './routes/mail-route';
+import routeHandler from './routes/mail-route.js';
+import { logger } from './middleware/logger.js';
+import agent from 'express-useragent';
+import reqip from 'request-ip';
 config();
 const port = process.env.PORT;
 const app = express();
 
 //middleware
+app.use(agent.express());
+app.use(reqip.mw());
+app.use(logger);
 app.use(express.json());
 
 //routes

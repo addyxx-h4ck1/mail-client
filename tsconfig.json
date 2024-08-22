@@ -7,8 +7,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "declaration": true, // Generates declaration files (.d.ts)
-    "sourceMap": true, // Generates source maps for easier debugging
+    "rootDir": "./src",
     "outDir": "./build",
     "resolveJsonModule": true, // Enable importing .json files
     "typeRoots": ["./node_modules/@types"], // Type definitions

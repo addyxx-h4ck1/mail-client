@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
-import { configOptions, testMessage } from '../config/options';
+import { configOptions, testMessage } from '../config/options.js';
 import { config } from 'dotenv';
 import data from '../db.json';
 config();

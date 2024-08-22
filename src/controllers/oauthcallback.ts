@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { google } from 'googleapis';
-import { configOptions } from '../config/options';
+import { configOptions } from '../config/options.js';
 import path from 'path';
-import { getDir } from '../utils/getDir';
-import { createUser } from '../libs/save';
+import { getDir } from '../utils/getDir.js';
+import { createUser } from '../libs/save.js';
 
 export const handleOauthcallback = async (req: Request, res: Response) => {
   const oauth2Client = new google.auth.OAuth2(

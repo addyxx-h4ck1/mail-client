@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { configOptions } from '../config/options';
+import { configOptions } from '../config/options.js';
 import { Request, Response } from 'express';
 
 export const registerUser = async (req: Request, res: Response) => {
