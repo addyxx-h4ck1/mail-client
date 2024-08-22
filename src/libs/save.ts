@@ -2,13 +2,9 @@ import path from 'path';
 import fsPromises from 'fs/promises';
 import fs from 'fs';
 import { getDir } from '../utils/getDir.js';
-import data from '../db.json' assert { type: 'json' };
+import { data } from '../db.js';
 
 export const readDB = async () => {
-  const data = await fsPromises.readFile(
-    path.join(getDir(), '..', 'db.json'),
-    'utf8'
-  );
   return data;
 };
 
@@ -21,7 +17,7 @@ export const createUser = async (
   let newData = await [...data, { email, refreshToken, accessToken }];
   try {
     await fsPromises.writeFile(
-      path.join(getDir(), '..', 'db.json'),
+      path.join(getDir(), '..', 'db.js'),
       JSON.stringify(newData)
     );
     return true;
