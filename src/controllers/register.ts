@@ -15,10 +15,10 @@ export const registerUser = async (req: Request, res: Response) => {
       scope: [
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/gmail.send',
+        'https://mail.google.com/',
       ],
     });
 
-    console.log(authorizationUrl);
     res.json(authorizationUrl);
   } catch (error: any) {
     console.log(error);

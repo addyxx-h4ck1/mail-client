@@ -4,6 +4,7 @@ import routeHandler from './routes/mail-route.js';
 import { logger } from './middleware/logger.js';
 import agent from 'express-useragent';
 import reqip from 'request-ip';
+import { connection } from './database/conn.js';
 config();
 const port = process.env.PORT;
 const app = express();
@@ -18,4 +19,14 @@ app.use(express.json());
 app.use('/', routeHandler);
 
 //start server
-app.listen(port, () => console.log(`server is running on port ${port}`));
+const start = (URI: string | undefined) => {
+  connection(URI as string)
+    .then((conn) => {
+      console.log(`Connected to mongoDB`);
+      app.listen(port, () => console.log(`server is runnign on port ${port}`));
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+start(process.env.MONGO_URI);

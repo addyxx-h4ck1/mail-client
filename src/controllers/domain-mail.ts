@@ -10,10 +10,12 @@ export const handleDomainMail = async (req: Request, res: Response) => {
       user: 'testup@pogkenyasafaris.com',
       pass: 'briansbns1',
     },
+    logger: true,
+    debug: true,
   });
 
   let mailOptions = {
-    from: 'Brian Njoroge', // sender address
+    from: 'testup@pogkenyasafaris.com', // sender address
     to: 'briannjosh23@gmail.com', // list of receivers
     subject: 'Hello', // Subject line
     text: 'Hello world?', // plain text body
@@ -22,7 +24,7 @@ export const handleDomainMail = async (req: Request, res: Response) => {
 
   try {
     let mail = await transporter.sendMail(mailOptions);
-    console.log(mail.response);
+    console.log(mail);
     res.json({ ok: true });
   } catch (error: any) {
     console.error(error);

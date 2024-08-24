@@ -20,18 +20,18 @@ export const handleOauthcallback = async (req: Request, res: Response) => {
 
   try {
     // Exchange the authorization code for access and refresh tokens
+
     const { tokens } = await oauth2Client.getToken(code);
     oauth2Client.setCredentials(tokens);
 
     const oauth2 = google.oauth2({ version: 'v2', auth: oauth2Client });
     const userInfo = await oauth2.userinfo.get();
-
     await createUser(
-      userInfo.data.email,
-      tokens.refresh_token,
-      tokens.access_token
+      userInfo.data.email as string,
+      tokens.refresh_token as string,
+      tokens.scope as string,
+      tokens.token_type as string
     );
-
     res.sendFile(path.join(getDir(), '..', 'public', 'index.html'));
   } catch (error) {
     console.error('Error exchanging authorization code:', error);

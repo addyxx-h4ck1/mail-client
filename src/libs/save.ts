@@ -1,27 +1,24 @@
-import path from 'path';
-import fsPromises from 'fs/promises';
-import fs from 'fs';
-import { getDir } from '../utils/getDir.js';
-import { data } from '../db.js';
+import User from '../models/model.js';
 
 export const readDB = async () => {
-  return data;
+  const allUsers = await User.find();
+  return allUsers;
 };
 
 export const createUser = async (
-  email: string | null | undefined,
-  refreshToken: string | null | undefined,
-  accessToken: string | null | undefined
+  email: string,
+  refreshToken: string,
+  scope: string,
+  tokenType: string
 ) => {
-  if (!email || !refreshToken) throw new Error('token and email needed');
-  let newData = await [...data, { email, refreshToken, accessToken }];
   try {
-    await fsPromises.writeFile(
-      path.join(getDir(), '..', 'db.js'),
-      JSON.stringify(newData)
-    );
-    return true;
-  } catch (error: any) {
-    console.log(error);
+    await User.create({
+      email: email,
+      refreshToken: refreshToken,
+      scope: scope,
+      tokenType: tokenType,
+    });
+  } catch (error) {
+    console.error(error);
   }
 };

@@ -24,11 +24,13 @@
   "dependencies": {
     "axios": "^1.7.4",
     "chalk": "^5.3.0",
+    "cors": "^2.8.5",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-useragent": "^1.0.15",
     "googleapis": "^140.0.1",
+    "mongoose": "^8.5.4",
     "nodemailer": "^6.9.14",
     "request-ip": "^3.3.0",
     "tsx": "^4.17.0",
