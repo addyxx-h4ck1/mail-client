@@ -24,7 +24,7 @@ app.use('/', routeHandler);
 const start = (URI: string | undefined) => {
   connection(URI as string)
     .then((conn) => {
-      console.log(`Connected to mongoDB`);
+      console.log(`Connected to mongo database`);
       app.listen(port, () => console.log(`server is runnign on port ${port}`));
     })
     .catch((err) => {
