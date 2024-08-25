@@ -1,5 +1,6 @@
 import express from 'express';
 import { config } from 'dotenv';
+import cors from 'cors';
 import routeHandler from './routes/mail-route.js';
 import { logger } from './middleware/logger.js';
 import agent from 'express-useragent';
@@ -10,6 +11,7 @@ const port = process.env.PORT;
 const app = express();
 
 //middleware
+app.use(cors());
 app.use(agent.express());
 app.use(reqip.mw());
 app.use(logger);
