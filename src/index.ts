@@ -25,10 +25,11 @@ const start = (URI: string | undefined) => {
   connection(URI as string)
     .then((conn) => {
       console.log(`Connected to mongo database`);
-      app.listen(port, () => console.log(`server is runnign on port ${port}`));
+      app.listen(port, () => console.log(`server is running on port ${port}`));
     })
     .catch((err) => {
       console.error(err);
     });
 };
 start(process.env.MONGO_URI);
+//app.listen(port, () => console.log(`server is running on port ${port}`));
