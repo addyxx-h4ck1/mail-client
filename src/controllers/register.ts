@@ -7,7 +7,7 @@ export const registerUser = async (req: Request, res: Response) => {
     const oauth2Client = new google.auth.OAuth2(
       configOptions.ClientId,
       configOptions.ClientSecret,
-      'http://localhost:3000'
+      'http://localhost:3000/dashboard/gmail-accounts/auth'
     );
 
     const authorizationUrl = oauth2Client.generateAuthUrl({
