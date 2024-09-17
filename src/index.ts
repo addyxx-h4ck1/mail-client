@@ -4,6 +4,7 @@ import cors from 'cors';
 import routeHandler from './routes/mail-route.js';
 import authRoutes from './routes/auth.js';
 import userDataRoute from './routes/user.js';
+import keysRoute from './routes/keys.js';
 import { logger } from './middleware/logger.js';
 import agent from 'express-useragent';
 import reqip from 'request-ip';
@@ -28,8 +29,11 @@ app.use('/', routeHandler);
 //auth routes
 app.use('/auth', authRoutes);
 
-//userdata route
+//userdata routes
 app.use('/u/d', userDataRoute);
+
+//API keys routes
+app.use('/api/v1/keys', keysRoute);
 
 //start server
 const start = (URI: string | undefined) => {
