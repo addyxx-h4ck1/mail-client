@@ -15,7 +15,8 @@ export const verifyUserToken = async (
       token,
       process.env.LOGIN_JWT_TOKEN as string
     );
-    req.body = decode;
+    //@ts-ignore
+    req.body = { ...req.body, ...decode };
     next();
   } catch (error: any) {
     res.status(401).json({ status: 401, err: 'Invalid token' });

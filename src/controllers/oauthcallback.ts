@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { google } from 'googleapis';
 import { configOptions } from '../config/options.js';
 import User from '../models/model.js';
+import { config } from 'dotenv';
+config();
 
 export const handleOauthcallback = async (req: Request, res: Response) => {
   const { userID } = req.body;
@@ -19,7 +21,7 @@ export const handleOauthcallback = async (req: Request, res: Response) => {
   const oauth2Client = new google.auth.OAuth2(
     configOptions.ClientId,
     configOptions.ClientSecret,
-    'http://localhost:3000/dashboard/gmail-accounts/auth'
+    process.env.GMAIL_INTERGRATION_URL as string
   );
 
   const code = req.query.code as string;
