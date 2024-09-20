@@ -14,10 +14,12 @@ export const registerUser = async (req: Request, res: Response) => {
 
     const authorizationUrl = oauth2Client.generateAuthUrl({
       access_type: 'offline',
+      prompt: 'consent',
       scope: [
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/gmail.send',
         'https://mail.google.com/',
+        'offline_access',
       ],
     });
 
