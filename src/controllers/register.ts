@@ -1,13 +1,15 @@
 import { google } from 'googleapis';
 import { configOptions } from '../config/options.js';
 import { Request, Response } from 'express';
+import { config } from 'dotenv';
+config();
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
     const oauth2Client = new google.auth.OAuth2(
       configOptions.ClientId,
       configOptions.ClientSecret,
-      'http://localhost:3000/dashboard/gmail-accounts/auth'
+      process.env.GMAIL_INTERGRATION_URL as string
     );
 
     const authorizationUrl = oauth2Client.generateAuthUrl({
